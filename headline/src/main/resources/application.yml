@@ -1,0 +1,28 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /
+
+
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        druid:
+            url: jdbc:mysql://localhost:3306/sm_db
+            username: root
+            password: 123456
+            driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+    type-aliases-package: com.example.headline
+    global-config:
+      db-config:
+          logic-delete-field: isDeleted
+          id-type: auto  # 自增长，默认采用雪花算法
+          table-prefix: news_
+
+#jwt配置
+jwt:
+    token:
+        tokenExpiration: 120 #有效时间,单位分钟
+        tokenSignKey: headline123456  #当前程序签名秘钥 自定义
